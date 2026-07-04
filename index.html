@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kirolos — Web Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d10;
+    --bg2:#111418;
+    --panel:#15181d;
+    --line:#23272e;
+    --text:#eef1f4;
+    --muted:#8b929c;
+    --accent:#f97316;
+    --radius:12px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1360px;margin:0 auto;padding:0 32px}
+
+  /* Top nav */
+  header{border-bottom:1px solid var(--line);background:var(--bg)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{font-family:'Caveat',cursive;font-weight:700;font-size:30px;letter-spacing:.01em}
+  .nav-mid{display:flex;gap:36px;font-size:14.5px;font-weight:500;color:var(--muted)}
+  .nav-mid a{position:relative;padding-top:10px}
+  .nav-mid a .count{position:absolute;top:-6px;right:-8px;font-size:10.5px;color:var(--accent);font-weight:600}
+  .nav-mid a.active{color:var(--text)}
+  .nav-mid a:hover{color:var(--text)}
+  .btn-random{background:var(--accent);color:#2a1503;font-weight:600;font-size:14px;padding:11px 20px;border-radius:999px;display:flex;gap:10px;align-items:center;border:none;cursor:pointer}
+  .btn-random kbd{background:rgba(42,21,3,.18);border:1px solid rgba(42,21,3,.3);border-radius:5px;padding:0 6px;font-size:11px;font-family:inherit}
+  .btn-random:hover{filter:brightness(1.08)}
+
+  /* Layout */
+  .main{display:grid;grid-template-columns:380px 1fr;gap:56px;padding:64px 0 96px;align-items:start}
+
+  /* Left panel */
+  .title{font-family:'Caveat',cursive;font-size:clamp(44px,4.6vw,64px);font-weight:700;line-height:1.05;margin-bottom:28px}
+  .note{color:var(--muted);font-size:13px;margin:-24px 0 32px;font-style:italic}
+  .visit{display:inline-block;background:#fff;color:#0b0d10;font-weight:600;font-size:14.5px;padding:13px 24px;border-radius:10px;margin-bottom:36px;transition:.15s}
+  .visit:hover{transform:translateY(-1px)}
+  .visit.unpublished{background:var(--panel);color:var(--muted);border:1px dashed var(--line);cursor:default;pointer-events:none}
+  table.meta{width:100%;border:1px solid var(--line);border-collapse:collapse;font-size:14.5px}
+  table.meta td{border:1px solid var(--line);padding:13px 16px}
+  table.meta td:first-child{color:var(--muted);width:42%}
+  table.meta td:last-child{color:var(--accent);font-weight:500}
+  .desc{margin-top:28px;color:var(--muted);font-size:14.5px;line-height:1.7}
+  .proj-nav{display:flex;gap:10px;margin-top:36px}
+  .proj-nav button{background:var(--panel);border:1px solid var(--line);color:var(--text);width:44px;height:44px;border-radius:10px;font-size:17px;cursor:pointer;transition:.15s}
+  .proj-nav button:hover{border-color:var(--accent);color:var(--accent)}
+  .proj-count{align-self:center;color:var(--muted);font-size:13.5px;margin-left:6px}
+
+  /* Right panel */
+  .controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:16px;flex-wrap:wrap}
+  .select{position:relative}
+  .select select{appearance:none;background:var(--bg);border:1px solid var(--line);color:var(--text);font-family:inherit;font-size:14px;font-weight:500;padding:11px 42px 11px 16px;border-radius:10px;cursor:pointer}
+  .select::after{content:"⌄";position:absolute;right:15px;top:50%;transform:translateY(-58%);color:var(--muted);pointer-events:none}
+  .toggle{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:4px}
+  .toggle button{background:transparent;border:none;color:var(--muted);font-family:inherit;font-size:13.5px;font-weight:600;padding:8px 18px;border-radius:7px;cursor:pointer;transition:.15s}
+  .toggle button.on{background:var(--accent);color:#2a1503}
+
+  /* Browser frame */
+  .frame{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 18px 0;transition:max-width .3s ease;margin-left:auto;margin-right:auto}
+  .frame.desktop{max-width:100%}
+  .frame.mobile{max-width:420px}
+  .chrome-bar{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .dots{display:flex;gap:6px}
+  .dots i{width:10px;height:10px;border-radius:50%;background:#2c313a;display:block}
+  .urlbar{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:9px;text-align:center;font-size:13.5px;color:var(--muted);padding:9px 16px}
+  .ext{color:var(--muted);font-size:15px}
+  .ext:hover{color:var(--text)}
+  .screen{border-radius:10px 10px 0 0;overflow-y:auto;overflow-x:hidden;height:640px;background:#fff;scrollbar-width:thin;scrollbar-color:#3a4048 transparent}
+  .frame.mobile .screen{height:720px}
+  .screen img{width:100%;display:block}
+  .screen::-webkit-scrollbar{width:8px}
+  .screen::-webkit-scrollbar-thumb{background:#3a4048;border-radius:4px}
+  .placeholder{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(160deg,#181c22,#111418);color:var(--muted);font-size:14px;border:2px dashed var(--line);border-radius:10px 10px 0 0}
+  .placeholder strong{color:var(--text);font-size:15px}
+  .placeholder code{background:var(--bg);border:1px solid var(--line);padding:3px 10px;border-radius:6px;font-size:12.5px;color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;padding:28px 0;text-align:center}
+
+  @media(max-width:980px){
+    .main{grid-template-columns:1fr;gap:40px;padding:40px 0 64px}
+    .nav-mid{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">Kirolos Emad</a>
+    <nav class="nav-mid">
+      <a class="active" href="index.html">Projects <span class="count" id="navCount">1</span></a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+    </nav>
+    <a class="btn-random" href="contact.html">Contact</a>
+  </div>
+</header>
+
+<div class="wrap main">
+
+  <!-- LEFT -->
+  <aside>
+    <h1 class="title" id="pTitle">—</h1>
+    <a class="visit" id="pVisit" href="#" target="_blank" rel="noopener">Visit website</a>
+    <div class="note" id="pNote" style="display:none"></div>
+    <table class="meta">
+      <tr><td>Page type</td><td id="pType">—</td></tr>
+      <tr><td>Stack</td><td id="pStack">—</td></tr>
+      <tr><td>Industry</td><td id="pIndustry">—</td></tr>
+    </table>
+    <p class="desc" id="pDesc"></p>
+    <div class="proj-nav">
+      <button onclick="step(-1)" aria-label="Previous">←</button>
+      <button onclick="step(1)" aria-label="Next">→</button>
+      <span class="proj-count" id="pCount"></span>
+    </div>
+  </aside>
+
+  <!-- RIGHT -->
+  <section>
+    <div class="controls">
+      <div class="select">
+        <select id="projectSelect" onchange="show(this.selectedIndex)"></select>
+      </div>
+      <div class="toggle">
+        <button id="btnDesktop" class="on" onclick="setView('desktop')">Desktop</button>
+        <button id="btnMobile" onclick="setView('mobile')">Mobile</button>
+      </div>
+    </div>
+
+    <div class="frame desktop" id="frame">
+      <div class="chrome-bar">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="urlbar" id="pUrl">—</div>
+        <a class="ext" id="pExt" href="#" target="_blank" rel="noopener">↗</a>
+      </div>
+      <div class="screen" id="screen"></div>
+    </div>
+  </section>
+</div>
+
+<footer>© 2026 Kirolos — Web design &amp; development portfolio</footer>
+
+<script>
+/* ============================================================
+   ADD YOUR PROJECTS HERE.
+   images.desktop / images.mobile = arrays of image paths,
+   shown stacked top-to-bottom inside the scrollable frame.
+   Put image files in an "images/" folder next to this file.
+   ============================================================ */
+const projects = [
+  {
+    title: "Gihan Beauty",
+    url: "https://gihanbeauty.com",
+    status: "live",            // "live" | "delivered" | "concept"
+    note: "Screenshots captured July 2026",
+    type: "Ecommerce Store",
+    stack: "Shopify",
+    industry: "Beauty & Cosmetics",
+    desc: "Multi-brand beauty store I manage and develop end to end — custom Liquid sections (slideshows, brand marquee, shop-the-look, metafield-driven banners), rewards program, and WhatsApp order-confirmation automation. Grew to 11,270+ orders and 7.4M+ EGP in 12 months at a 2.77% conversion rate.",
+    images: {
+      desktop: ["images/gihan-desktop-1.jpg"],
+      mobile:  ["images/gihan-mobile-1.jpg"]
+    }
+  },
+  {
+    title: "Merneith",
+    url: "https://merneithofficial.com",
+    status: "live",
+    note: "Screenshots captured July 2026",
+    type: "Ecommerce Store",
+    stack: "Shopify",
+    industry: "Modest Fashion",
+    desc: "Elegant modest-fashion storefront built and managed end to end — refined brand identity, product merchandising, wishlist, FAQ, and email capture. Full theme customization on Shopify.",
+    images: {
+      desktop: ["images/merneith-desktop-1.jpg"],
+      mobile:  ["images/merneith-mobile-1.jpg"]
+    }
+  },
+  {
+    title: "Zema",
+    url: "",
+    status: "concept",
+    type: "Ecommerce Store",
+    stack: "Shopify",
+    industry: "Jewelry & Fashion",
+    desc: "Freelance build for a jewelry brand — full storefront design and development: theme customization, navigation architecture, promotional announcement bars, and collection merchandising.",
+    images: {
+      desktop: ["images/zema-desktop-1.jpg"],
+      mobile:  ["images/zema-mobile-1.jpg"]
+    }
+  }
+  /* , { title:"Next project", url:"https://...", type:"Landing", stack:"React",
+       industry:"SaaS", desc:"...", images:{desktop:[...], mobile:[...]} } */
+];
+
+let current = 0, view = "desktop";
+
+function show(i){
+  current = (i + projects.length) % projects.length;
+  const p = projects[current];
+  pTitle.textContent = p.title;
+
+  // status handling
+  const st = p.status || "live";
+  if(st === "concept" || !p.url){
+    pVisit.textContent = "Not published yet";
+    pVisit.classList.add("unpublished");
+    pVisit.removeAttribute("href");
+    pExt.style.display = "none";
+  } else {
+    pVisit.textContent = "Visit website";
+    pVisit.classList.remove("unpublished");
+    pVisit.href = p.url; pExt.href = p.url;
+    pExt.style.display = "";
+  }
+  pNote.style.display = p.note ? "" : "none";
+  pNote.textContent = p.note || "";
+  pType.textContent = p.type;
+  pStack.textContent = p.stack;
+  pIndustry.textContent = p.industry;
+  pDesc.textContent = p.desc || "";
+  pUrl.textContent = p.url ? p.url.replace(/^https?:\/\//,"").replace(/\/$/,"") + "/" : p.title.toLowerCase().replace(/\s+/g,"") + ".com/";
+  pCount.textContent = (current+1) + " / " + projects.length;
+  projectSelect.selectedIndex = current;
+  renderScreens();
+}
+
+function renderScreens(){
+  const p = projects[current];
+  const imgs = (p.images && p.images[view]) || [];
+  const scr = document.getElementById("screen");
+  scr.innerHTML = "";
+  if(!imgs.length){
+    scr.innerHTML = placeholderHTML(p);
+    return;
+  }
+  let loaded = false;
+  imgs.forEach(src=>{
+    const img = new Image();
+    img.src = src;
+    img.onload = ()=>{ loaded = true; };
+    img.onerror = ()=>{ if(!loaded && !scr.querySelector("img[data-ok]")) scr.innerHTML = placeholderHTML(p); };
+    img.onload = ()=> img.setAttribute("data-ok","1");
+    scr.appendChild(img);
+  });
+  scr.scrollTop = 0;
+}
+
+function placeholderHTML(p){
+  return `<div class="placeholder">
+    <strong>${p.title} — ${view} screenshots</strong>
+    <span>Drop the files into the <code>images/</code> folder as:</span>
+    <code>${(p.images && p.images[view] || []).join("</code><code>") || "images/…"}</code>
+  </div>`;
+}
+
+function setView(v){
+  view = v;
+  document.getElementById("btnDesktop").classList.toggle("on", v==="desktop");
+  document.getElementById("btnMobile").classList.toggle("on", v==="mobile");
+  const f = document.getElementById("frame");
+  f.classList.toggle("desktop", v==="desktop");
+  f.classList.toggle("mobile", v==="mobile");
+  renderScreens();
+}
+
+function step(d){ show(current + d); }
+
+/* init */
+projects.forEach((p,i)=>{
+  const o = document.createElement("option");
+  o.textContent = p.title; o.value = i;
+  projectSelect.appendChild(o);
+});
+document.getElementById("navCount").textContent = projects.length;
+show(0);
+</script>
+
+</body>
+</html>
