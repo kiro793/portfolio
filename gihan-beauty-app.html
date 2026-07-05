@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gihan Beauty App — Kirolos Emad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0b0d10;--panel:#15181d;--line:#23272e;--text:#eef1f4;--muted:#8b929c;--accent:#f97316;--radius:14px}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1150px;margin:0 auto;padding:0 32px}
+
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,13,16,.9);backdrop-filter:blur(10px);z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{font-family:'Caveat',cursive;font-weight:700;font-size:30px}
+  .nav-mid{display:flex;gap:36px;font-size:14.5px;font-weight:500;color:var(--muted)}
+  .nav-mid a.active{color:var(--text)}
+  .nav-mid a:hover{color:var(--text)}
+  .cta{background:var(--accent);color:#2a1503;font-weight:600;font-size:14px;padding:11px 20px;border-radius:999px}
+
+  .eyebrow{color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+  h1{font-family:'Caveat',cursive;font-size:clamp(52px,6.5vw,84px);font-weight:700;line-height:1;margin-bottom:20px}
+  h2{font-family:'Caveat',cursive;font-size:clamp(36px,4vw,52px);font-weight:700;line-height:1.05;margin-bottom:16px}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;padding:80px 0}
+  .hero p{color:var(--muted);font-size:17px;max-width:52ch;margin-bottom:26px}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+  .chips span{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13px;color:var(--muted)}
+  .chips span b{color:var(--accent);font-weight:600}
+  .btn{display:inline-block;background:var(--accent);color:#2a1503;font-weight:600;font-size:14.5px;padding:14px 28px;border-radius:999px;transition:.15s}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--line);margin-left:10px}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .hero-art{position:relative}
+  .hero-art img{border-radius:24px;box-shadow:0 40px 90px rgba(249,115,22,.15)}
+
+  /* Story band */
+  .band{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:70px 0;border-top:1px solid var(--line)}
+  .band img{border-radius:24px}
+  .band .copy p{color:var(--muted);font-size:16px;margin-bottom:18px;max-width:52ch}
+  .kv{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+  .kv div{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+  .kv b{display:block;color:var(--accent);font-size:14px;font-weight:600;margin-bottom:4px}
+  .kv span{color:var(--muted);font-size:13.5px}
+
+  /* Features */
+  .features{padding:70px 0;border-top:1px solid var(--line)}
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+  .f{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .f b{display:block;font-size:15.5px;margin-bottom:8px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .f p{color:var(--muted);font-size:14px}
+
+  /* Screens strip */
+  .screens{padding:70px 0;border-top:1px solid var(--line)}
+  .strip{display:flex;gap:20px;overflow-x:auto;padding:24px 4px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#3a4048 transparent}
+  .shot{flex:0 0 220px;scroll-snap-align:start;border:2.5px solid #2c313a;border-radius:28px;overflow:hidden;background:#000;padding:6px}
+  .shot img{border-radius:20px}
+
+  /* Closing */
+  .closing{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;padding:70px 0;border-top:1px solid var(--line)}
+  .closing img{border-radius:24px}
+  .closing p{color:var(--muted);font-size:16px;max-width:48ch;margin-bottom:26px}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;padding:28px 0;text-align:center}
+
+  @media(max-width:900px){
+    .wrap{padding:0 20px}
+    .nav{flex-wrap:wrap;height:auto;padding:14px 0;row-gap:12px}
+    .nav-mid{order:3;width:100%;gap:26px}
+    .hero,.band,.closing{grid-template-columns:1fr;gap:36px;padding:44px 0}
+    .hero-art{order:-1}
+    .fgrid{grid-template-columns:1fr}
+    .kv{grid-template-columns:1fr}
+    .btn.ghost{margin-left:0;margin-top:10px}
+    .shot{flex-basis:180px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">Kirolos Emad</a>
+    <nav class="nav-mid">
+      <a href="index.html">Projects</a>
+      <a class="active" href="gihan-beauty-app.html">App</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+    </nav>
+    <a class="cta" href="contact.html">Contact</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="wrap hero">
+  <div>
+    <div class="eyebrow">Case study — Mobile App</div>
+    <h1>Gihan Beauty App</h1>
+    <p>A native shopping app I designed and built from scratch for Gihan Beauty — React Native with Expo, talking live to the Shopify store through the Storefront API. One catalog, one cart, one brand — now in your pocket.</p>
+    <div class="chips">
+      <span><b>React Native</b> / Expo</span>
+      <span><b>Shopify</b> Storefront API</span>
+      <span><b>iOS</b> &amp; <b>Android</b></span>
+      <span>TypeScript</span>
+    </div>
+    <a class="btn" href="#screens">See the screens</a>
+    <a class="btn ghost" href="index.html">Back to projects</a>
+  </div>
+  <div class="hero-art">
+    <img src="images/gbapp-hero.jpg" alt="Gihan Beauty app icon on iPhone home screen">
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="wrap band">
+  <img src="images/gbapp-duo.jpg" alt="Gihan Beauty app account and categories screens">
+  <div class="copy">
+    <div class="eyebrow">Why an app</div>
+    <h2>The store, rebuilt as a native experience.</h2>
+    <p>Gihan Beauty's customers reorder the same products often — an app makes that a two-tap habit instead of a browser search. The app mirrors the live store in real time: products, prices, collections, and stock all come straight from Shopify, so there's nothing to maintain twice.</p>
+    <div class="kv">
+      <div><b>Live catalog sync</b><span>Products, collections &amp; prices via Storefront API — zero duplicate management</span></div>
+      <div><b>Cart &amp; checkout</b><span>Native cart flowing into Shopify's secure checkout</span></div>
+      <div><b>Wishlist &amp; orders</b><span>Sign-in, order tracking, and saved favorites</span></div>
+      <div><b>Support built in</b><span>WhatsApp, call, and email one tap away</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="wrap features">
+  <div class="eyebrow">Under the hood</div>
+  <h2>Built like a product, not a demo.</h2>
+  <div class="fgrid">
+    <div class="f"><b>Expo Router navigation</b><p>File-based routing with native stack transitions, a floating tab bar, and deep-link support.</p></div>
+    <div class="f"><b>GraphQL data layer</b><p>Typed Storefront API queries for products, collections, cart mutations, and customer accounts.</p></div>
+    <div class="f"><b>Brand-first UI</b><p>The store's visual identity translated to native patterns — clean cards, soft shadows, editorial banners.</p></div>
+    <div class="f"><b>Performance</b><p>Image caching with expo-image, lazy lists, and skeleton states for slow networks.</p></div>
+    <div class="f"><b>COD-ready flows</b><p>Checkout designed around Egyptian market reality: cash on delivery and WhatsApp confirmation.</p></div>
+    <div class="f"><b>EAS builds</b><p>Cloud builds and over-the-air updates — ship fixes without waiting for store review.</p></div>
+  </div>
+</section>
+
+<!-- SCREENS -->
+<section class="wrap screens" id="screens">
+  <div class="eyebrow">Real screens</div>
+  <h2>Straight from the app.</h2>
+  <div class="strip">
+    <div class="shot"><img src="images/gbapp-1.jpg" alt="Home screen"></div>
+    <div class="shot"><img src="images/gbapp-2.jpg" alt="Categories screen"></div>
+    <div class="shot"><img src="images/gbapp-3.jpg" alt="Campaign banner screen"></div>
+    <div class="shot"><img src="images/gbapp-4.jpg" alt="Cart and checkout screen"></div>
+    <div class="shot"><img src="images/gbapp-5.jpg" alt="Account screen"></div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="wrap closing">
+  <div>
+    <div class="eyebrow">Want something like this?</div>
+    <h2>From Shopify store to native app.</h2>
+    <p>If you run a Shopify store, your app doesn't need a separate backend — I build native apps that plug straight into your existing catalog, checkout, and customer accounts.</p>
+    <a class="btn" href="contact.html">Let's talk</a>
+  </div>
+  <img src="images/gbapp-hand.jpg" alt="Gihan Beauty app held in hand">
+</section>
+
+<footer>© 2026 Kirolos Emad Jacoup — E-Commerce Specialist &amp; Shopify Developer</footer>
+
+</body>
+</html>
