@@ -100,7 +100,7 @@
     <b style="color:var(--text)">💾 Save</b> writes directly into <code>projects-data.js</code> in this folder
     (Chrome/Edge — pick the file the first time).<br>
     <b style="color:var(--text)">⬇ Download</b> downloads a new copy — replace the old file with it.<br><br>
-    Then upload <code>projects-data.js</code> (and any new images in <code>images/designs/</code>) to GitHub, same as always.
+    Then upload <code>projects-data.js</code> (and any new images in <code>images/</code>) to GitHub, same as always.
   </p>
   <button class="btn primary" style="margin-top:14px" onclick="this.closest('dialog').close()">Got it</button>
 </dialog>
@@ -207,13 +207,13 @@ function renderEditor(){
   const ab=document.createElement('div'); ab.className='addbox';
   ab.innerHTML=`<h4>Add image</h4>
     <div class="addrow">
-      <div><label>Image source</label><input type="text" id="npSrc" placeholder="Drive link / https://... / images/designs/file.jpg"></div>
+      <div><label>Image source</label><input type="text" id="npSrc" placeholder="Drive link / https://... / images/file.jpg"></div>
       <div><label>Title</label><input type="text" id="npT" placeholder="Title"></div>
       <div><label>Note</label><input type="text" id="npD" placeholder="Optional"></div>
       <div style="align-self:end"><button class="btn primary" onclick="addPiece()">＋ Add</button></div>
     </div>
     <div class="hint">Paste a <b>Google Drive share link</b>, a direct <b>https://</b> image URL, or a local path like
-    <code>images/designs/my-design.jpg</code> (drop the file in that folder first). <span class="mini" style="color:var(--accent);cursor:pointer" onclick="document.getElementById('help').showModal()">How do I save? →</span></div>`;
+    <code>images/my-design.jpg</code> (drop the file in that folder first). <span class="mini" style="color:var(--accent);cursor:pointer" onclick="document.getElementById('help').showModal()">How do I save? →</span></div>`;
   ed.appendChild(ab);
 }
 

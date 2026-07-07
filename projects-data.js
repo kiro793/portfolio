@@ -119,7 +119,7 @@ const PROJECTS = [
         "d": "Supporting social media design"
       },
       {
-        "img": "images/designs/momento-collection.jpg",
+        "img": "images/momento-collection.jpg",
         "t": "Social Collection",
         "d": "Campaign posts overview"
       }
@@ -132,28 +132,28 @@ const PROJECTS = [
     "del": "Label artwork & bottle mockups",
     "tools": "Photoshop, Illustrator",
     "cover": {
-      "img": "images/designs/dore-1.jpg"
+      "img": "images/dore-1.jpg"
     },
     "desc": "Label design for Dore Pomegranate Shower Gel — front and back label artwork, presented on final bottle mockups.",
     "layout": "grid",
     "pieces": [
       {
-        "img": "images/designs/dore-1.jpg",
+        "img": "images/dore-1.jpg",
         "t": "Bottle Duo",
         "d": "Final mockup"
       },
       {
-        "img": "images/designs/dore-2.jpg",
+        "img": "images/dore-2.jpg",
         "t": "Front & Back",
         "d": ""
       },
       {
-        "img": "images/designs/dore-3.jpg",
+        "img": "images/dore-3.jpg",
         "t": "Single Bottle",
         "d": ""
       },
       {
-        "img": "images/designs/dore-back.jpg",
+        "img": "images/dore-back.jpg",
         "t": "Back Label",
         "d": "Ingredients & info panel"
       }
@@ -166,28 +166,28 @@ const PROJECTS = [
     "del": "Social posts, flyer, menu, seasonal greetings",
     "tools": "Photoshop, Illustrator",
     "cover": {
-      "img": "images/designs/suhouse-flyer.jpg"
+      "img": "images/suhouse-flyer.jpg"
     },
     "desc": "Design work for Su House, a sushi restaurant — social media posts, promotional flyer, menu design and seasonal greetings, all built around a bold dark identity with Japanese touches.",
     "layout": "grid",
     "pieces": [
       {
-        "img": "images/designs/suhouse-flyer.jpg",
+        "img": "images/suhouse-flyer.jpg",
         "t": "Offer Flyer",
         "d": "10% discount flyer — mockup"
       },
       {
-        "img": "images/designs/suhouse-post-1.jpg",
+        "img": "images/suhouse-post-1.jpg",
         "t": "Social Post",
         "d": "مش حابب تجرب!"
       },
       {
-        "img": "images/designs/suhouse-post-2.jpg",
+        "img": "images/suhouse-post-2.jpg",
         "t": "Delivery Post",
         "d": ""
       },
       {
-        "img": "images/designs/suhouse-ramadan.jpg",
+        "img": "images/suhouse-ramadan.jpg",
         "t": "Ramadan Greeting",
         "d": ""
       }
@@ -200,33 +200,33 @@ const PROJECTS = [
     "del": "Logo, social campaign & business cards",
     "tools": "Photoshop & Illustrator",
     "cover": {
-      "img": "images/designs/tayba-cover.jpg"
+      "img": "images/tayba-cover.jpg"
     },
     "desc": "Full brand presentation for طيبة للحوم (Tayba Meats), a Saudi butchery brand — Arabic logo and identity, a social media campaign with pricing posts and product photography direction, Instagram carousel designs, and business cards for five branches.",
     "layout": "full",
     "pieces": [
       {
-        "img": "images/designs/tayba-1.jpg",
+        "img": "images/tayba-1.jpg",
         "t": "Brand Identity",
         "d": "Arabic logotype & mark"
       },
       {
-        "img": "images/designs/tayba-2.jpg",
+        "img": "images/tayba-2.jpg",
         "t": "Campaign Posts",
         "d": "Launch & pricing creatives"
       },
       {
-        "img": "images/designs/tayba-3.jpg",
+        "img": "images/tayba-3.jpg",
         "t": "Instagram Carousel",
         "d": "Awareness series"
       },
       {
-        "img": "images/designs/tayba-4.jpg",
+        "img": "images/tayba-4.jpg",
         "t": "Pricing Series",
         "d": "Product photography & typography"
       },
       {
-        "img": "images/designs/tayba-5.jpg",
+        "img": "images/tayba-5.jpg",
         "t": "Feed & Business Cards",
         "d": "Profile mockup + 5-branch cards"
       }
@@ -239,23 +239,23 @@ const PROJECTS = [
     "del": "Logo design & variations",
     "tools": "Illustrator",
     "cover": {
-      "img": "images/designs/outdoors-logo.png"
+      "img": "images/outdoors-logo.png"
     },
     "desc": "Logo design for Outdoors — a door-inspired 'D' mark with wordmark and line variations.",
     "layout": "grid",
     "pieces": [
       {
-        "img": "images/designs/outdoors-logo.png",
+        "img": "images/outdoors-logo.png",
         "t": "Logo Mark",
         "d": "Primary mark"
       },
       {
-        "img": "images/designs/outdoors-logo-line.png",
+        "img": "images/outdoors-logo-line.png",
         "t": "Horizontal Lockup",
         "d": ""
       },
       {
-        "img": "images/designs/outdoors-logo-alt.png",
+        "img": "images/outdoors-logo-alt.png",
         "t": "Stacked Lockup",
         "d": ""
       }
@@ -268,23 +268,23 @@ const PROJECTS = [
     "del": "Product & campaign creatives",
     "tools": "Photoshop",
     "cover": {
-      "img": "images/designs/hitech-jbl-1.jpg"
+      "img": "images/hitech-jbl-1.jpg"
     },
     "desc": "Social media designs for Hi Tech electronics — JBL speakers and smart-home products: campaign creatives and product posts.",
     "layout": "wide",
     "pieces": [
       {
-        "img": "images/designs/hitech-jbl-1.jpg",
+        "img": "images/hitech-jbl-1.jpg",
         "t": "JBL — Home Cinema",
         "d": "Campaign set"
       },
       {
-        "img": "images/designs/hitech-jbl-2.jpg",
+        "img": "images/hitech-jbl-2.jpg",
         "t": "JBL — Outdoor Speakers",
         "d": "Campaign set"
       },
       {
-        "img": "images/designs/hitech-collection.jpg",
+        "img": "images/hitech-collection.jpg",
         "t": "Work Collection",
         "d": "Posts overview"
       }
@@ -450,12 +450,12 @@ const PROJECTS = [
         "d": ""
       },
       {
-        "img": "images/designs/galeria-collection.jpg",
+        "img": "images/galeria-collection.jpg",
         "t": "Galeria Professional",
         "d": "Hair-care social collection"
       },
       {
-        "img": "images/designs/xpert-launch.jpg",
+        "img": "images/xpert-launch.jpg",
         "t": "Xpert — Launch Posts",
         "d": "Business launch campaign"
       },
