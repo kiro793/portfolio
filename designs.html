@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kirolos — Graphic Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d10;
+    --bg2:#111418;
+    --panel:#15181d;
+    --line:#23272e;
+    --text:#eef1f4;
+    --muted:#8b929c;
+    --accent:#f97316;
+    --radius:12px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1360px;margin:0 auto;padding:0 32px}
+
+  /* Top nav */
+  header{border-bottom:1px solid var(--line);background:var(--bg)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{font-family:'Caveat',cursive;font-weight:700;font-size:30px;letter-spacing:.01em}
+  .nav-mid{display:flex;gap:36px;font-size:14.5px;font-weight:500;color:var(--muted)}
+  .nav-mid a.active{color:var(--text)}
+  .nav-mid a:hover{color:var(--text)}
+  .cta{background:var(--accent);color:#2a1503;font-weight:600;font-size:14px;padding:11px 20px;border-radius:999px}
+
+  /* Hero */
+  .hero{padding:72px 0 40px}
+  .eyebrow{color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+  h1{font-family:'Caveat',cursive;font-size:clamp(46px,5.6vw,72px);font-weight:700;line-height:1.05;margin-bottom:20px}
+  .hero p{color:var(--muted);font-size:17px;max-width:64ch}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+  .chips span{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13.5px;color:var(--muted)}
+  .chips span b{color:var(--accent);font-weight:600}
+
+  /* ===== Folder gallery (Behance style) ===== */
+  .folders{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;padding:16px 0 80px}
+  .folder{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:.15s}
+  .folder:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .cover{aspect-ratio:4/3;overflow:hidden;background:var(--bg2);position:relative}
+  .cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s}
+  .folder:hover .cover img{transform:scale(1.04)}
+  .cover .n{position:absolute;right:12px;top:12px;background:rgba(11,13,16,.85);backdrop-filter:blur(4px);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:12px;color:var(--muted)}
+  .finfo{padding:16px 18px 18px}
+  .finfo .ft{font-weight:600;font-size:16.5px}
+  .finfo .fc{color:var(--muted);font-size:13px;margin-top:4px}
+  .finfo .fc b{color:var(--accent);font-weight:600}
+
+  /* ===== Project detail ===== */
+  .project{display:none;padding:56px 0 80px}
+  .back{display:inline-flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:10px 20px;font-size:14px;color:var(--muted);cursor:pointer;transition:.15s;margin-bottom:36px}
+  .back:hover{border-color:var(--accent);color:var(--accent)}
+  .p-head{display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:start;margin-bottom:44px}
+  .p-head h2{font-family:'Caveat',cursive;font-size:clamp(44px,5vw,66px);font-weight:700;line-height:1.05;margin-bottom:16px}
+  .p-head .pdesc{color:var(--muted);font-size:15.5px;line-height:1.75;max-width:62ch}
+  table.meta{width:100%;border:1px solid var(--line);border-collapse:collapse;font-size:14.5px}
+  table.meta td{border:1px solid var(--line);padding:13px 16px}
+  table.meta td:first-child{color:var(--muted);width:42%}
+  table.meta td:last-child{color:var(--accent);font-weight:500}
+  .p-body{max-width:1000px;margin:0 auto}
+  .piece{margin-bottom:44px}
+  .piece img{width:100%;display:block;border-radius:var(--radius);border:1px solid var(--line);background:var(--bg2);cursor:zoom-in;min-height:80px}
+  .piece .cap{display:flex;justify-content:space-between;gap:16px;margin-top:12px;align-items:baseline}
+  .piece .cap .ct{font-weight:600;font-size:15px}
+  .piece .cap .cd{color:var(--muted);font-size:13.5px;text-align:right}
+  .p-grid{columns:3 250px;column-gap:18px}
+  .p-grid.two{columns:2 340px}
+  .p-grid .piece{break-inside:avoid;margin-bottom:18px}
+  .p-grid .piece .cap{margin-top:9px}
+  .p-next{margin-top:24px;border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .p-next .lbl{color:var(--muted);font-size:13px}
+  .p-next a{color:var(--accent);font-weight:600;font-size:15px;cursor:pointer}
+
+  /* Lightbox */
+  #lightbox{position:fixed;inset:0;background:rgba(7,8,10,.95);display:none;align-items:center;justify-content:center;z-index:100;flex-direction:column;padding:4vh 4vw;cursor:zoom-out}
+  #lightbox.open{display:flex}
+  #lightbox img{max-width:92vw;max-height:84vh;border-radius:10px;box-shadow:0 30px 90px rgba(0,0,0,.8)}
+  #lbcap{margin-top:14px;color:var(--muted);font-size:14px}
+  #lbcap b{color:var(--accent);font-weight:600}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;padding:28px 0;text-align:center}
+
+  @media(max-width:980px){
+    .wrap{padding:0 20px}
+    .nav{flex-wrap:wrap;height:auto;padding:14px 0;row-gap:12px}
+    .nav-mid{order:3;width:100%;gap:26px}
+    .hero{padding:44px 0 28px}
+    .p-head{grid-template-columns:1fr;gap:28px}
+    .folders{gap:16px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">Kirolos Emad</a>
+    <nav class="nav-mid">
+      <a href="index.html">Projects</a>
+      <a href="gihan-beauty-app.html">App</a>
+      <a class="active" href="designs.html">Designs</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+    </nav>
+    <a class="cta" href="contact.html">Contact</a>
+  </div>
+</header>
+
+<!-- ===== GALLERY VIEW ===== -->
+<div id="galleryView">
+  <section class="wrap hero">
+    <div class="eyebrow">Graphic Design Portfolio</div>
+    <h1>Design work, from screen to shelf.</h1>
+    <p>Alongside e-commerce, I've spent years doing graphic design for beauty &amp; personal-care brands — social media campaigns, web banners, printed materials, product packaging, and full brand presentations. Open a project to explore.</p>
+    <div class="chips">
+      <span><b>20+</b> brands</span>
+      <span><b>110+</b> selected pieces</span>
+      <span><b id="projCount">7</b> projects</span>
+    </div>
+  </section>
+  <div class="wrap folders" id="folders"></div>
+</div>
+
+<!-- ===== PROJECT VIEW ===== -->
+<div id="projectView" class="project">
+  <div class="wrap">
+    <span class="back" onclick="goHome()">← All projects</span>
+    <div class="p-head">
+      <div>
+        <h2 id="pTitle"></h2>
+        <p class="pdesc" id="pDesc"></p>
+      </div>
+      <table class="meta">
+        <tr><td>Category</td><td id="pCat"></td></tr>
+        <tr><td>Deliverables</td><td id="pDel"></td></tr>
+        <tr><td>Tools</td><td id="pTools"></td></tr>
+      </table>
+    </div>
+    <div class="p-body" id="pBody"></div>
+    <div class="p-next">
+      <span class="lbl">Next project</span>
+      <a id="pNext"></a>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Kirolos — Web design &amp; development portfolio</footer>
+
+<div id="lightbox"><img id="lbimg" src="" alt=""><div id="lbcap"></div></div>
+
+<script src="projects-data.js?v=1"></script>
+<script>
+/* ============================================================
+   Behance-style folders. Each project: cover + intro text +
+   pieces (image id + title + optional note shown next to it).
+   Images load from Google Drive; to self-host later, replace
+   the src builders with local paths.
+   ============================================================ */
+const thumb = id => `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+const alt1  = id => `https://lh3.googleusercontent.com/d/${id}=w1200`;
+const full  = id => `https://drive.google.com/thumbnail?id=${id}&sz=w2000`;
+
+/* piece can be {id:...} (Google Drive) or {url:...} (direct CDN link) */
+const srcThumb = pc => pc.img ? pc.img : (pc.url ? pc.url + '&width=900'  : thumb(pc.id));
+const srcFull  = pc => pc.img ? pc.img : (pc.url ? pc.url + '&width=2000' : full(pc.id));
+
+function mkImg(pc, alt){
+  const img = new Image();
+  img.loading='lazy'; img.alt=alt; img.src=srcThumb(pc);
+  img.onerror=()=>{ if(!img.dataset.f && pc.id){img.dataset.f=1; img.src=alt1(pc.id);} };
+  return img;
+}
+
+/* ---- gallery ---- */
+const foldersEl = document.getElementById('folders');
+document.getElementById('projCount').textContent = PROJECTS.length;
+PROJECTS.forEach(p=>{
+  const f=document.createElement('div'); f.className='folder';
+  const cov=document.createElement('div'); cov.className='cover';
+  cov.appendChild(mkImg(typeof p.cover==='string' ? {id:p.cover} : p.cover, p.title));
+  const n=document.createElement('span'); n.className='n'; n.textContent=p.pieces.length+' pieces';
+  cov.appendChild(n);
+  const info=document.createElement('div'); info.className='finfo';
+  const t=document.createElement('div'); t.className='ft'; t.textContent=p.title;
+  const c=document.createElement('div'); c.className='fc';
+  const b=document.createElement('b'); b.textContent=p.cat;
+  c.appendChild(b);
+  info.appendChild(t); info.appendChild(c);
+  f.appendChild(cov); f.appendChild(info);
+  f.onclick=()=>{ location.hash='#/'+p.slug; };
+  foldersEl.appendChild(f);
+});
+
+/* ---- project detail ---- */
+const gView=document.getElementById('galleryView'), pView=document.getElementById('projectView');
+
+function render(){
+  const slug=(location.hash||'').replace('#/','');
+  const i=PROJECTS.findIndex(p=>p.slug===slug);
+  if(i===-1){
+    gView.style.display=''; pView.style.display='none';
+    window.scrollTo(0,0);
+    return;
+  }
+  const p=PROJECTS[i];
+  gView.style.display='none'; pView.style.display='block';
+  document.getElementById('pTitle').textContent=p.title;
+  document.getElementById('pDesc').textContent=p.desc;
+  document.getElementById('pCat').textContent=p.cat;
+  document.getElementById('pDel').textContent=p.del;
+  document.getElementById('pTools').textContent=p.tools;
+
+  const body=document.getElementById('pBody');
+  body.innerHTML='';
+  const holder=document.createElement('div');
+  holder.className = p.layout==='wide' ? 'p-grid two' : 'p-grid';
+  p.pieces.forEach(pc=>{
+    const d=document.createElement('div'); d.className='piece';
+    const img=mkImg(pc,pc.t);
+    img.onclick=()=>openLb(pc);
+    const cap=document.createElement('div'); cap.className='cap';
+    const ct=document.createElement('span'); ct.className='ct'; ct.textContent=pc.t;
+    cap.appendChild(ct);
+    if(pc.d){ const cd=document.createElement('span'); cd.className='cd'; cd.textContent=pc.d; cap.appendChild(cd); }
+    d.appendChild(img); d.appendChild(cap);
+    holder.appendChild(d);
+  });
+  body.appendChild(holder);
+
+  const next=PROJECTS[(i+1)%PROJECTS.length];
+  const nx=document.getElementById('pNext');
+  nx.textContent=next.title+' →';
+  nx.onclick=()=>{ location.hash='#/'+next.slug; };
+  window.scrollTo(0,0);
+}
+function goHome(){ location.hash=''; }
+window.addEventListener('hashchange',render);
+render();
+
+/* ---- lightbox ---- */
+const lb=document.getElementById('lightbox'), lbimg=document.getElementById('lbimg'), lbcap=document.getElementById('lbcap');
+function openLb(pc){
+  lbimg.src=srcFull(pc);
+  lbimg.onerror=()=>{ if(pc.id) lbimg.src=alt1(pc.id); };
+  lbcap.innerHTML='';
+  const b=document.createElement('b'); b.textContent=pc.t;
+  lbcap.appendChild(b);
+  if(pc.d) lbcap.append(' — '+pc.d);
+  lb.classList.add('open');
+}
+lb.onclick=()=>lb.classList.remove('open');
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('open'); });
+</script>
+
+</body>
+</html>
